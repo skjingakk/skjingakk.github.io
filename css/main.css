@@ -1168,7 +1168,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #472fe5;
+  background: #12ffff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2295,4 +2295,11 @@ embed {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+#背景图片设置,
+body {
+  background-image: url("/images/bg1.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }
