@@ -23,30 +23,32 @@
     var CONFIG = {"hostname":"skjing.top","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="这是sk的学习博客 只能pwj和sk看">
-<meta property="og:type" content="website">
-<meta property="og:title" content="SK的BLOG">
-<meta property="og:url" content="http://skjing.top/index.html">
+  <meta name="description" content="Epoll要点水平触发模式（阻塞io）LT水平触发每次socket缓冲区有数据可读时，就触发。这是epoll的默认模式。如果读缓冲区较小，发送数据大，需要循环读取数据。而每次循环是用epoll_wait实现的。 1234for( ; ; )    &amp;#123;         nfds &#x3D; epoll_wait(epfd,events,20,500); 	&amp;#125;  每次读完之后完成一次循环，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="epoll三种工作模式">
+<meta property="og:url" content="http://skjing.top/2022/06/11/Epoll%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="SK的BLOG">
-<meta property="og:description" content="这是sk的学习博客 只能pwj和sk看">
+<meta property="og:description" content="Epoll要点水平触发模式（阻塞io）LT水平触发每次socket缓冲区有数据可读时，就触发。这是epoll的默认模式。如果读缓冲区较小，发送数据大，需要循环读取数据。而每次循环是用epoll_wait实现的。 1234for( ; ; )    &amp;#123;         nfds &#x3D; epoll_wait(epfd,events,20,500); 	&amp;#125;  每次读完之后完成一次循环，">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-11T01:41:57.000Z">
+<meta property="article:modified_time" content="2022-06-11T02:28:28.464Z">
 <meta property="article:author" content="s k">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://skjing.top/">
+<link rel="canonical" href="http://skjing.top/2022/06/11/Epoll%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>SK的BLOG</title>
+  <title>epoll三种工作模式 | SK的BLOG</title>
   
 
 
@@ -152,9 +154,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -170,10 +173,9 @@
       <meta itemprop="name" content="SK的BLOG">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/06/11/Epoll%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">epoll三种工作模式</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          epoll三种工作模式
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -197,7 +199,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Epoll要点"><a href="#Epoll要点" class="headerlink" title="Epoll要点"></a><strong>Epoll要点</strong></h1><h4 id="水平触发模式（阻塞io）LT"><a href="#水平触发模式（阻塞io）LT" class="headerlink" title="水平触发模式（阻塞io）LT"></a>水平触发模式（阻塞io）LT</h4><p>水平触发每次socket缓冲区有数据可读时，就触发。这是epoll的<strong>默认模式</strong>。如果读缓冲区较小，发送数据大，需要循环读取数据。而每次循环是用epoll_wait实现的。</p>
+        <h1 id="Epoll要点"><a href="#Epoll要点" class="headerlink" title="Epoll要点"></a><strong>Epoll要点</strong></h1><h4 id="水平触发模式（阻塞io）LT"><a href="#水平触发模式（阻塞io）LT" class="headerlink" title="水平触发模式（阻塞io）LT"></a>水平触发模式（阻塞io）LT</h4><p>水平触发每次socket缓冲区有数据可读时，就触发。这是epoll的<strong>默认模式</strong>。如果读缓冲区较小，发送数据大，需要循环读取数据。而每次循环是用epoll_wait实现的。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( ; ; )</span><br><span class="line">    &#123;</span><br><span class="line">         nfds = <span class="built_in">epoll_wait</span>(epfd,events,<span class="number">20</span>,<span class="number">500</span>);</span><br><span class="line"> 	&#125;</span><br></pre></td></tr></table></figure>
 
 <p>每次读完之后完成一次循环，epoll_wait检测到还有数据，即剩余数据一直触发EPOLLIN，所以可以一直读。</p>
@@ -217,80 +219,47 @@
 
 
 
-      
     </div>
 
     
     
     
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>s k
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://skjing.top/2022/06/11/Epoll%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/" title="epoll三种工作模式">http://skjing.top/2022/06/11/Epoll三种工作模式/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://skjing.top/2022/06/10/sk/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/realmadrid.png">
-      <meta itemprop="name" content="s k">
-      <meta itemprop="description" content="这是sk的学习博客 只能pwj和sk看">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SK的BLOG">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/06/10/sk/" class="post-title-link" itemprop="url">sk</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-06-10 22:24:15 / 修改时间：22:24:25" itemprop="dateCreated datePublished" datetime="2022-06-10T22:24:15+08:00">2022-06-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>！<em>静静我爱你嘻嘻嘻！</em></p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/06/10/sk/" rel="prev" title="sk">
+      <i class="fa fa-chevron-left"></i> sk
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -343,6 +312,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Epoll%E8%A6%81%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">Epoll要点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B0%B4%E5%B9%B3%E8%A7%A6%E5%8F%91%E6%A8%A1%E5%BC%8F%EF%BC%88%E9%98%BB%E5%A1%9Eio%EF%BC%89LT"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">水平触发模式（阻塞io）LT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%B9%E6%B2%BF%E8%A7%A6%E5%8F%91%E6%A8%A1%E5%BC%8F%EF%BC%88%E9%98%BB%E5%A1%9Eio%EF%BC%89ET"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">边沿触发模式（阻塞io）ET</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%B9%E6%B2%BF%E8%A7%A6%E5%8F%91-%E9%9D%9E%E9%98%BB%E5%A1%9Eio"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">边沿触发+非阻塞io</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EPOLLIN%E5%92%8CEPOLLOUT"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">EPOLLIN和EPOLLOUT</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
