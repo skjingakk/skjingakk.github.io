@@ -20,13 +20,13 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"skjing.top","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"www.skjinga.top","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="Epoll要点水平触发模式（阻塞io）LT水平触发每次socket缓冲区有数据可读时，就触发。这是epoll的默认模式。如果读缓冲区较小，发送数据大，需要循环读取数据。而每次循环是用epoll_wait实现的。 1234for( ; ; )    &amp;#123;         nfds &#x3D; epoll_wait(epfd,events,20,500); 	&amp;#125;  每次读完之后完成一次循环，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="epoll三种工作模式">
-<meta property="og:url" content="http://skjing.top/2022/06/11/Epoll%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:url" content="http://www.skjinga.top/2022/06/11/Epoll%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="SK的BLOG">
 <meta property="og:description" content="Epoll要点水平触发模式（阻塞io）LT水平触发每次socket缓冲区有数据可读时，就触发。这是epoll的默认模式。如果读缓冲区较小，发送数据大，需要循环读取数据。而每次循环是用epoll_wait实现的。 1234for( ; ; )    &amp;#123;         nfds &#x3D; epoll_wait(epfd,events,20,500); 	&amp;#125;  每次读完之后完成一次循环，">
 <meta property="og:locale" content="zh_CN">
@@ -36,7 +36,7 @@
 <meta property="article:tag" content="epoll">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://skjing.top/2022/06/11/Epoll%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/">
+<link rel="canonical" href="http://www.skjinga.top/2022/06/11/Epoll%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/">
 
 
 <script id="page-configurations">
@@ -162,7 +162,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://skjing.top/2022/06/11/Epoll%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/">
+    <link itemprop="mainEntityOfPage" href="http://www.skjinga.top/2022/06/11/Epoll%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/realmadrid.png">
@@ -234,7 +234,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://skjing.top/2022/06/11/Epoll%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/" title="epoll三种工作模式">http://skjing.top/2022/06/11/Epoll三种工作模式/</a>
+    <a href="http://www.skjinga.top/2022/06/11/Epoll%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/" title="epoll三种工作模式">http://www.skjinga.top/2022/06/11/Epoll三种工作模式/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -258,8 +258,8 @@
       <i class="fa fa-chevron-left"></i> sk
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/06/11/leetcodenotes/" rel="next" title="leetcodenotes">
-      leetcodenotes <i class="fa fa-chevron-right"></i>
+    <a href="/2022/06/11/leetcodenotes/" rel="next" title="leetcodenotes0">
+      leetcodenotes0 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -335,14 +335,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
